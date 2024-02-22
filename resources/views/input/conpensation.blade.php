@@ -94,7 +94,7 @@
                   <td>{{$expenses->expenses}}</td>
                   <td>{{$comments->comments}}</td>
                   <td>{{$tax->created_at}}</td>
-                  <td>37%</td>
+                  <td>{{$documents->documents}}</td>
                 </tr>
                 @endforeach
                 @endforeach

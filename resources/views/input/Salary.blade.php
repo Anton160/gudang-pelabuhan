@@ -78,7 +78,7 @@
                   <th>Tax Id</th>
                   
                   <th>Money</th>
-                  <th>Comments</th>
+                  <th>Employee id</th>
                   <th>Input Date</th>
                   <th>Doc</th>
                 </tr>
@@ -89,12 +89,12 @@
                 
                 @foreach ($tax->document as $documents)
                 <tr>
-                  <td>{{$tax->empoymee_namee}}</td>
+                  <td>{{$tax->employee_name}}</td>
                   <td>{{$tax->id}}</td>
                   <td>{{$expenses->expenses}}</td>
-                  <td>{{$tax->empoymee_id}}</td>
+                  <td>{{$tax->employee_id}}</td>
                   <td>{{$tax->created_at}}</td>
-                  <td>37%</td>
+                  <td>{{$documents->documents}}</td>
                 </tr>
                 
                 @endforeach

@@ -19,8 +19,13 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'employee_id',
         'email',
         'password',
+        'image',
+        'is_admin',
+        'is_itsupports',
+        'is_banned'
     ];
 
     /**
@@ -32,6 +37,14 @@ class User extends Authenticatable
         'password',
         'remember_token',
     ];
+    public function scopeFilter($query,array $filters){
+        $query->when($filters['search']??false,function($query,$search){
+            $query->where('name','like','%'.$search.'%')
+            ->orwhere('employee_id','like','%'.$search.'%');
+        });
+
+    }
+
 
     /**
      * The attributes that should be cast.
