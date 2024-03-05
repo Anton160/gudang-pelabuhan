@@ -14,12 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::middleware('banned')->group(function () {
-Route::get('/', function () {
-    return view('dashboard',[
-        'users' =>User::where('id',auth()->user()->id)->first()
-    ]);
 
-})->middleware('redirect');;
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware('auth');
@@ -58,7 +53,12 @@ Route::get('/user-account/edit/{user}',[\App\Http\Controllers\UserAccount::class
 Route::delete('/userdelete/{user}',[\App\Http\Controllers\UserAccount::class,'destroy'])->middleware('auth');
 Route::put('/user-account/{user}',[\App\Http\Controllers\UserAccount::class,'update'])->middleware('auth');
 });
+Route::get('/', function () {
+    return view('dashboard',[
+        'users' =>User::where('id',auth()->user()->id)->first()
+    ]);
 
+})->middleware('redirect');
 Route::get('/userLogin',[\App\Http\Controllers\UserLogin::class,'UserAccount'])->middleware('guest')->name('login')->withoutMiddleware('auth');
 Route::post('/userLogin',[\App\Http\Controllers\UserLogin::class,'Authenticate']);
 Route::get('/logout',[\App\Http\Controllers\UserLogin::class,'logout']);
